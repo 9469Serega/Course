@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Технології кіберспорту</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #0b0f12;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+/* SIDE PANELS */
+.side {
+    position: fixed;
+    top: 0;
+    width: 220px;
+    height: 100vh;
+    background: linear-gradient(180deg, #000, #111);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    z-index: 10;
+}
+
+.side.left { left: 0; }
+.side.right { right: 0; }
+
+.logo-box {
+    width: 160px;
+    height: 100px;
+    background: #141414;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-box img {
+    max-width: 85%;
+    max-height: 85%;
+}
+
+/* MAIN SCROLL AREA */
+main {
+    margin: 0 220px;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 40px 50px;
+
+    background: linear-gradient(
+        90deg,
+        rgba(0,0,0,0.95) 0%,
+        #2a1416 18%,
+        #4a2022 50%,
+        #2a1416 82%,
+        rgba(0,0,0,0.95) 100%
+    );
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+main::-webkit-scrollbar {
+    display: none;
+}
+
+/* HERO IMAGE */
+.hero-image {
+    width: 100%;
+    height: 360px;
+    overflow: hidden;
+    border-radius: 22px;
+    margin-bottom: 60px;
+    position: relative;
+    box-shadow: 0 0 40px rgba(0,0,0,0.7);
+}
+
+.hero-image img {
+    width: 100%;
+    height: 140%;
+    object-fit: cover;
+    object-position: center 35%;
+}
+
+/* VIGNETTE */
+.hero-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background: radial-gradient(
+        ellipse at center,
+        rgba(0,0,0,0) 35%,
+        rgba(0,0,0,0.35) 60%,
+        rgba(0,0,0,0.75) 100%
+    );
+}
+
+
+/* HEADER */
+header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 12px;
+}
+
+header p {
+    opacity: 0.85;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* CARDS */
+.card {
+    max-width: 1000px;
+    margin: 0 auto 35px;
+    padding: 25px 30px;
+    background: rgba(0,0,0,0.45);
+    border-radius: 18px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.55);
+}
+
+.card h2 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: #ffd6d6;
+}
+
+.card p,
+.card li {
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.card ul {
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.card li {
+    margin-bottom: 8px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    opacity: 0.6;
+    margin: 60px 0 20px;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+    .side {
+        display: none;
+    }
+    main {
+        margin: 0;
+        padding: 30px 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LEFT SIDE -->
+<div class="side left">
+    <div class="logo-box"><img src="navi.png" alt="NAVI"></div>
+    <div class="logo-box"><img src="vitality.png" alt="Vitality"></div>
+    <div class="logo-box"><img src="faze.png" alt="FaZe"></div>
+</div>
+
+<!-- RIGHT SIDE -->
+<div class="side right">
+    <div class="logo-box"><img src="navi.png" alt="NAVI"></div>
+    <div class="logo-box"><img src="vitality.png" alt="Vitality"></div>
+    <div class="logo-box"><img src="faze.png" alt="FaZe"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main>
+
+<!-- HERO -->
+<div class="hero-image">
+    <img src="s1mple.jpg" alt="Esports player">
+</div>
+
+<header>
+    <h1>Технології кіберспорту</h1>
+    <p>Вплив кіберспортивних технологій на формування цифрової культури молоді</p>
+</header>
+
+<div class="card">
+    <h2>Актуальність теми</h2>
+    <p>
+        Кіберспорт є одним із найдинамічніших явищ сучасної цифрової культури.
+        Він поєднує технології, спорт і медіа, формуючи нові моделі соціальної
+        взаємодії та самореалізації молоді.
+    </p>
+</div>
+
+<div class="card">
+    <h2>Мета та завдання дослідження</h2>
+    <ul>
+        <li>Визначити роль кіберспорту в сучасній культурі</li>
+        <li>Проаналізувати технологічні аспекти розвитку кіберспорту</li>
+        <li>Дослідити вплив на цифрові цінності та поведінку молоді</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2>Сутність кіберспорту</h2>
+    <p>
+        Кіберспорт — це організована змагальна діяльність у сфері відеоігор,
+        що має професійні команди, турніри та глобальну аудиторію.
+    </p>
+</div>
+
+<div class="card">
+    <h2>Основні напрями кіберспорту</h2>
+    <ul>
+        <li>MOBA — Dota 2, League of Legends</li>
+        <li>FPS — Counter-Strike 2, Valorant</li>
+        <li>RTS — StarCraft II, Warcraft III</li>
+        <li>Симулятори — FIFA, NBA 2K, Rocket League</li>
+        <li>Battle Royale — PUBG, Fortnite, Apex Legends</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2>Вплив на цифрову культуру молоді</h2>
+    <p>
+        Кіберспорт формує цифрову ідентичність, розвиває комунікацію,
+        стимулює інтерес до ІТ та медіа й створює нові професійні можливості.
+    </p>
+</div>
+
+<footer>
+    © 2026 | Курсова робота
+</footer>
+
+</main>
+
+</body>
+</html>
