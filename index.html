@@ -1,306 +1,245 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-<meta charset="UTF-8">
-<title>Технології кіберспорту</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Технології кіберспорту</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- НАСТРОЙКИ MATERIAL DESIGN 3 (ТОКЕНЫ) --- */
+        :root {
+            /* Цветовая палитра (Dark Mode) */
+            --md-sys-color-background: #111114;       /* Почти черный фон */
+            --md-sys-color-on-background: #E2E2E5;    /* Светлый текст */
+            
+            --md-sys-color-surface: #1E1F23;          /* Цвет карточек */
+            --md-sys-color-surface-variant: #44474F;  /* Цвет кнопок/чипсов */
+            
+            --md-sys-color-primary: #A8C7FA;          /* Акцентный (нежно-голубой) */
+            --md-sys-color-on-primary: #003062;       /* Текст на акцентном */
+            
+            --md-sys-color-secondary-container: #004A77; /* Для активных элементов */
+            
+            /* Типографика */
+            --md-sys-typescale-display-large: 700 48px/56px 'Roboto', sans-serif;
+            --md-sys-typescale-headline-medium: 500 28px/36px 'Roboto', sans-serif;
+            --md-sys-typescale-body-large: 400 16px/24px 'Roboto', sans-serif;
+        }
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
+        /* --- БАЗОВЫЕ СТИЛИ --- */
+        body {
+            background-color: var(--md-sys-color-background);
+            color: var(--md-sys-color-on-background);
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
 
-body {
-    background: #0b0f12;
-    color: #ffffff;
-}
+        /* Контейнер для центровки контента */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 24px;
+        }
 
-/* ================= DESKTOP ================= */
+        /* --- HEADER & ЛОГОТИПЫ --- */
+        header {
+            text-align: center;
+            padding: 40px 0;
+        }
 
-/* SIDE PANELS */
-.side {
-    position: fixed;
-    top: 0;
-    width: 220px;
-    height: 100vh;
-    background: linear-gradient(180deg, #000, #111);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    z-index: 10;
-}
+        /* Контейнер для ряда логотипов */
+        .team-logos {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
 
-.side.left { left: 0; }
-.side.right { right: 0; }
+        /* Интерактивная карточка логотипа */
+        .logo-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--md-sys-color-surface-variant);
+            border-radius: 16px;
+            padding: 12px 24px;
+            width: 80px;
+            height: 60px;
+            text-decoration: none;
+            
+            /* Анимация */
+            transition: all 0.3s cubic-bezier(0.2, 0.0, 0, 1.0);
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
 
-.logo-box {
-    width: 160px;
-    height: 100px;
-    background: #141414;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        /* Эффект наведения */
+        .logo-card:hover {
+            background-color: var(--md-sys-color-primary);
+            transform: translateY(-5px); /* Подпрыгивание */
+            box-shadow: 0 4px 12px rgba(168, 199, 250, 0.3); /* Свечение */
+        }
 
-.logo-box img {
-    max-width: 85%;
-    max-height: 85%;
-}
+        /* Эффект нажатия */
+        .logo-card:active {
+            transform: scale(0.95);
+        }
 
-/* MAIN */
-main {
-    margin: 0 220px;
-    min-height: 100vh;
-    overflow-y: auto;
-    padding: 40px 50px;
+        .logo-card img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
 
-    background: linear-gradient(
-        90deg,
-        rgba(0,0,0,0.95) 0%,
-        #2a1416 18%,
-        #4a2022 50%,
-        #2a1416 82%,
-        rgba(0,0,0,0.95) 100%
-    );
-}
+        /* Заголовки */
+        h1 {
+            font: var(--md-sys-typescale-display-large);
+            color: var(--md-sys-color-primary);
+            margin: 0;
+        }
 
-/* HERO */
-.hero-image {
-    width: 100%;
-    height: 360px;
-    overflow: hidden;
-    border-radius: 22px;
-    margin-bottom: 60px;
-    position: relative;
-    box-shadow: 0 0 40px rgba(0,0,0,0.7);
-}
+        .subtitle {
+            font-size: 20px;
+            opacity: 0.8;
+            margin-top: 8px;
+        }
 
-.hero-image img {
-    width: 100%;
-    height: 140%;
-    object-fit: cover;
-    object-position: center 35%;
-}
+        /* --- ГЛАВНОЕ ИЗОБРАЖЕНИЕ --- */
+        .hero-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover; /* Обрезает лишнее, сохраняя пропорции */
+            object-position: top; /* Фокус на верхней части фото (лицо) */
+            border-radius: 24px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
 
-.hero-image::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-        ellipse at center,
-        rgba(0,0,0,0) 35%,
-        rgba(0,0,0,0.35) 60%,
-        rgba(0,0,0,0.75) 100%
-    );
-}
+        /* --- КАРТОЧКИ С КОНТЕНТОМ --- */
+        .card {
+            background-color: var(--md-sys-color-surface);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
 
-/* HEADER */
-header {
-    text-align: center;
-    margin-bottom: 60px;
-}
+        h2 {
+            font: var(--md-sys-typescale-headline-medium);
+            margin-top: 0;
+            margin-bottom: 16px;
+            color: var(--md-sys-color-primary);
+        }
 
-header h1 {
-    font-size: 3rem;
-    margin-bottom: 12px;
-}
+        p, li {
+            font: var(--md-sys-typescale-body-large);
+            color: var(--md-sys-color-on-background);
+        }
 
-header p {
-    opacity: 0.85;
-    max-width: 900px;
-    margin: 0 auto;
-}
+        /* --- ЧИПСЫ (Жанры игр) --- */
+        .chip-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
 
-/* CARDS */
-.card {
-    max-width: 1000px;
-    margin: 0 auto 35px;
-    padding: 25px 30px;
-    background: rgba(0,0,0,0.45);
-    border-radius: 18px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.55);
-}
+        .chip {
+            border: 1px solid var(--md-sys-color-surface-variant);
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-weight: 500;
+            font-size: 14px;
+            background-color: rgba(255,255,255, 0.03);
+            transition: background-color 0.2s;
+        }
+        
+        .chip:hover {
+            background-color: var(--md-sys-color-surface-variant);
+        }
 
-.card h2 {
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-    color: #ffd6d6;
-}
-
-.card p,
-.card li {
-    line-height: 1.6;
-    opacity: 0.9;
-}
-
-.card ul {
-    padding-left: 20px;
-    margin-top: 10px;
-}
-
-.card li {
-    margin-bottom: 8px;
-}
-
-/* FOOTER */
-footer {
-    text-align: center;
-    opacity: 0.6;
-    margin: 60px 0 20px;
-}
-
-/* ================= MOBILE ================= */
-@media (max-width: 900px) {
-
-    /* убираем боковины */
-    .side {
-        display: none;
-    }
-
-    body {
-        overflow: auto;
-    }
-
-    main {
-        margin: 0;
-        padding: 24px 16px;
-        background: linear-gradient(
-            180deg,
-            #0b0f12 0%,
-            #2a1416 50%,
-            #0b0f12 100%
-        );
-    }
-
-    .hero-image {
-        height: 220px;
-        margin-bottom: 30px;
-        border-radius: 16px;
-    }
-
-    .hero-image img {
-        height: 120%;
-        object-position: center 25%;
-    }
-
-    header {
-        margin-bottom: 35px;
-    }
-
-    header h1 {
-        font-size: 2rem;
-        line-height: 1.2;
-    }
-
-    header p {
-        font-size: 0.95rem;
-    }
-
-    .card {
-        padding: 18px 20px;
-        border-radius: 16px;
-    }
-
-    .card h2 {
-        font-size: 1.25rem;
-    }
-
-    .card p,
-    .card li {
-        font-size: 0.95rem;
-    }
-
-    footer {
-        font-size: 0.85rem;
-        margin-top: 40px;
-    }
-}
-</style>
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 40px;
+            opacity: 0.5;
+            font-size: 12px;
+            margin-top: 20px;
+            border-top: 1px solid var(--md-sys-color-surface-variant);
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- LEFT SIDE -->
-<div class="side left">
-    <div class="logo-box"><img src="navi.png" alt="NAVI"></div>
-    <div class="logo-box"><img src="vitality.png" alt="Vitality"></div>
-    <div class="logo-box"><img src="faze.png" alt="FaZe"></div>
-</div>
+    <div class="container">
+        
+        <header>
+            <div class="team-logos">
+                <a href="https://navi.gg/en" target="_blank" class="logo-card" aria-label="NAVI">
+                    <img src="navi.png" alt="NAVI">
+                </a>
+                <a href="https://vitality.gg/en" target="_blank" class="logo-card" aria-label="Vitality">
+                    <img src="vitality.png" alt="Vitality">
+                </a>
+                <a href="https://fazeclan.com/" target="_blank" class="logo-card" aria-label="FaZe">
+                    <img src="faze.png" alt="FaZe">
+                </a>
+            </div>
 
-<!-- RIGHT SIDE -->
-<div class="side right">
-    <div class="logo-box"><img src="navi.png" alt="NAVI"></div>
-    <div class="logo-box"><img src="vitality.png" alt="Vitality"></div>
-    <div class="logo-box"><img src="faze.png" alt="FaZe"></div>
-</div>
+            <h1>Технології кіберспорту</h1>
+            <p class="subtitle">Вплив кіберспортивних технологій на формування цифрової культури молоді</p>
+        </header>
 
-<main>
+        <img src="s1mple.jpg" alt="S1mple Esports Player" class="hero-image">
 
-<div class="hero-image">
-    <img src="s1mple.jpg" alt="Esports player">
-</div>
+        <div class="card">
+            <h2>Актуальність теми</h2>
+            <p>
+                Кіберспорт є одним із найдинамічніших явищ сучасної цифрової культури.
+                Він поєднує технології, спорт і медіа, формуючи нові моделі соціальної
+                взаємодії та самореалізації молоді.
+            </p>
+        </div>
 
-<header>
-    <h1>Технології кіберспорту</h1>
-    <p>Вплив кіберспортивних технологій на формування цифрової культури молоді</p>
-</header>
+        <div class="card">
+            <h2>Основні напрями кіберспорту</h2>
+            <div class="chip-container">
+                <div class="chip">MOBA: Dota 2, LoL</div>
+                <div class="chip">FPS: CS 2, Valorant</div>
+                <div class="chip">RTS: StarCraft II</div>
+                <div class="chip">Simulators: FIFA, NBA 2K</div>
+                <div class="chip">Battle Royale: PUBG, Fortnite</div>
+            </div>
+        </div>
 
-<div class="card">
-    <h2>Актуальність теми</h2>
-    <p>
-        Кіберспорт є одним із найдинамічніших явищ сучасної цифрової культури.
-        Він поєднує технології, спорт і медіа, формуючи нові моделі соціальної
-        взаємодії та самореалізації молоді.
-    </p>
-</div>
+        <div class="card">
+            <h2>Мета та сутність</h2>
+            <p><strong>Сутність:</strong> Організована змагальна діяльність у сфері відеоігор, що має професійні команди та глобальну аудиторію.</p>
+            <p><strong>Завдання дослідження:</strong></p>
+            <ul>
+                <li>Визначити роль кіберспорту в сучасній культурі</li>
+                <li>Проаналізувати технологічні аспекти розвитку</li>
+                <li>Дослідити вплив на цифрові цінності молоді</li>
+            </ul>
+        </div>
 
-<div class="card">
-    <h2>Мета та завдання дослідження</h2>
-    <ul>
-        <li>Визначити роль кіберспорту в сучасній культурі</li>
-        <li>Проаналізувати технологічні аспекти розвитку кіберспорту</li>
-        <li>Дослідити вплив на цифрові цінності та поведінку молоді</li>
-    </ul>
-</div>
+        <div class="card">
+            <h2>Вплив на цифрову культуру</h2>
+            <p>
+                Кіберспорт формує цифрову ідентичність, розвиває навички комунікації,
+                стимулює інтерес до ІТ та медіа-технологій, а також створює нові професійні можливості
+                для молодого покоління.
+            </p>
+        </div>
 
-<div class="card">
-    <h2>Сутність кіберспорту</h2>
-    <p>
-        Кіберспорт — це організована змагальна діяльність у сфері відеоігор,
-        що має професійні команди, турніри та глобальну аудиторію.
-    </p>
-</div>
+        <footer>
+            © 2026 | Курсова робота | Designed with Material You
+        </footer>
 
-<div class="card">
-    <h2>Основні напрями кіберспорту</h2>
-    <ul>
-        <li>MOBA — Dota 2, League of Legends</li>
-        <li>FPS — Counter-Strike 2, Valorant</li>
-        <li>RTS — StarCraft II, Warcraft III</li>
-        <li>Симулятори — FIFA, NBA 2K, Rocket League</li>
-        <li>Battle Royale — PUBG, Fortnite, Apex Legends</li>
-    </ul>
-</div>
-
-<div class="card">
-    <h2>Вплив на цифрову культуру молоді</h2>
-    <p>
-        Кіберспорт формує цифрову ідентичність, розвиває комунікацію,
-        стимулює інтерес до ІТ та медіа й створює нові професійні можливості.
-    </p>
-</div>
-
-<footer>
-    © 2026 | Курсова робота
-</footer>
-
-</main>
+    </div>
 
 </body>
 </html>
