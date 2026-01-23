@@ -3,172 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Технології кіберспорту</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Технології кіберспорту | Андрющенко С.С.</title>
     
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+
     <style>
-        /* --- НАСТРОЙКИ MATERIAL DESIGN 3 (ТОКЕНЫ) --- */
         :root {
-            /* Цветовая палитра (Dark Mode) */
-            --md-sys-color-background: #111114;       /* Почти черный фон */
-            --md-sys-color-on-background: #E2E2E5;    /* Светлый текст */
+            /* Material Design 3 Dark Tokens */
+            --md-sys-color-primary: #D0BCFF;
+            --md-sys-color-on-primary: #381E72;
+            --md-sys-color-primary-container: #4F378B;
+            --md-sys-color-on-primary-container: #EADDFF;
+
+            --md-sys-color-secondary: #CCC2DC;
+            --md-sys-color-secondary-container: #4A4458;
+            --md-sys-color-on-secondary-container: #E8DEF8;
+
+            --md-sys-color-tertiary: #EFB8C8;
+            --md-sys-color-tertiary-container: #633B48;
+
+            --md-sys-color-background: #141218;
+            --md-sys-color-on-background: #E6E1E5;
             
-            --md-sys-color-surface: #1E1F23;          /* Цвет карточек */
-            --md-sys-color-surface-variant: #44474F;  /* Цвет кнопок/чипсов */
-            
-            --md-sys-color-primary: #A8C7FA;          /* Акцентный (нежно-голубой) */
-            --md-sys-color-on-primary: #003062;       /* Текст на акцентном */
-            
-            --md-sys-color-secondary-container: #004A77; /* Для активных элементов */
-            
-            /* Типографика */
-            --md-sys-typescale-display-large: 700 48px/56px 'Roboto', sans-serif;
-            --md-sys-typescale-headline-medium: 500 28px/36px 'Roboto', sans-serif;
-            --md-sys-typescale-body-large: 400 16px/24px 'Roboto', sans-serif;
+            --md-sys-color-surface: #141218;
+            --md-sys-color-surface-container: #211F26;
+            --md-sys-color-surface-container-high: #2B2930;
+
+            --md-sys-color-outline: #938F99;
+            --radius-xl: 28px;
+            --radius-l: 16px;
+            --radius-m: 12px;
         }
 
-        /* --- БАЗОВЫЕ СТИЛИ --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
             background-color: var(--md-sys-color-background);
             color: var(--md-sys-color-on-background);
             font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
             line-height: 1.6;
+            padding: 20px;
         }
 
-        /* Контейнер для центровки контента */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 24px;
-        }
+        h1, h2, h3, h4 { color: var(--md-sys-color-on-background); }
+        h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 16px; }
+        h2 { font-size: 1.8rem; font-weight: 500; margin-bottom: 30px; color: var(--md-sys-color-primary); }
+        h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 10px; }
+        
+        p { margin-bottom: 16px; color: #CAC4D0; }
+        a { text-decoration: none; color: inherit; }
 
-        /* --- HEADER & ЛОГОТИПЫ --- */
-        header {
+        .container { max-width: 1100px; margin: 0 auto; }
+        section { margin-bottom: 80px; }
+
+        /* --- HERO --- */
+        .hero {
             text-align: center;
-            padding: 40px 0;
+            padding: 80px 20px;
+            background: radial-gradient(circle at center, rgba(79, 55, 139, 0.25) 0%, transparent 70%);
+            border-radius: var(--radius-xl);
+            margin-bottom: 40px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .chip {
+            background: var(--md-sys-color-secondary-container);
+            color: var(--md-sys-color-on-secondary-container);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 20px;
         }
 
-        /* Контейнер для ряда логотипов */
-        .team-logos {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            margin-bottom: 32px;
-            flex-wrap: wrap;
+        /* --- CARDS & GRIDS --- */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+        
+        .card {
+            background: var(--md-sys-color-surface-container);
+            border-radius: var(--radius-l);
+            padding: 24px;
+            transition: 0.3s;
         }
+        .card:hover { transform: translateY(-5px); background: var(--md-sys-color-surface-container-high); }
 
-        /* Интерактивная карточка логотипа */
-        .logo-card {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--md-sys-color-surface-variant);
-            border-radius: 16px;
-            padding: 12px 24px;
-            width: 80px;
-            height: 60px;
-            text-decoration: none;
-            
-            /* Анимация */
-            transition: all 0.3s cubic-bezier(0.2, 0.0, 0, 1.0);
-            cursor: pointer;
+        /* --- ORGANIZATIONS --- */
+        .org-card {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; height: 100%; padding: 30px 20px;
+            border: 1px solid transparent; cursor: pointer;
+        }
+        .org-card:hover { border-color: var(--md-sys-color-primary); }
+        .org-title { font-size: 1.5rem; font-weight: 900; margin-bottom: 5px; }
+        
+        .weplay { color: #FF5722; }
+        .starladder { color: #fff; }
+        .maincast { color: #00E676; }
+        .esl { color: #FFEB3B; }
+
+        /* --- TECH SECTION STYLES --- */
+        .tech-split { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        @media (max-width: 768px) { .tech-split { grid-template-columns: 1fr; } }
+
+        .tech-item {
+            display: flex; align-items: flex-start; gap: 15px; margin-bottom: 20px;
+            padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .tech-item:last-child { border-bottom: none; }
+        .tech-icon { color: var(--md-sys-color-tertiary); font-size: 28px; }
+
+        /* --- PLATFORMS --- */
+        .platform-card {
+            padding: 20px; 
+            border-radius: var(--radius-m); 
+            display: flex; 
+            align-items: center; 
+            gap: 15px;
+            background: var(--md-sys-color-surface-container);
+            transition: all 0.2s ease;
             border: 1px solid transparent;
         }
-
-        /* Эффект наведения */
-        .logo-card:hover {
-            background-color: var(--md-sys-color-primary);
-            transform: translateY(-5px); /* Подпрыгивание */
-            box-shadow: 0 4px 12px rgba(168, 199, 250, 0.3); /* Свечение */
+        .platform-card:hover {
+            background: var(--md-sys-color-surface-container-high);
+            transform: translateY(-3px);
+            border-color: rgba(255,255,255,0.1);
         }
 
-        /* Эффект нажатия */
-        .logo-card:active {
-            transform: scale(0.95);
-        }
+        .plat-icon { font-size: 32px; }
+        .twitch { color: #A970FF; }
+        .youtube { color: #FF0000; }
+        .discord { color: #5865F2; }
 
-        .logo-card img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-        }
-
-        /* Заголовки */
-        h1 {
-            font: var(--md-sys-typescale-display-large);
-            color: var(--md-sys-color-primary);
-            margin: 0;
-        }
-
-        .subtitle {
-            font-size: 20px;
-            opacity: 0.8;
-            margin-top: 8px;
-        }
-
-        /* --- ГЛАВНОЕ ИЗОБРАЖЕНИЕ --- */
-        .hero-image {
-            width: 100%;
-            height: 350px;
-            object-fit: cover; /* Обрезает лишнее, сохраняя пропорции */
-            object-position: top; /* Фокус на верхней части фото (лицо) */
-            border-radius: 24px;
-            margin-bottom: 32px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-        }
-
-        /* --- КАРТОЧКИ С КОНТЕНТОМ --- */
-        .card {
-            background-color: var(--md-sys-color-surface);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 16px;
-        }
-
-        h2 {
-            font: var(--md-sys-typescale-headline-medium);
-            margin-top: 0;
-            margin-bottom: 16px;
-            color: var(--md-sys-color-primary);
-        }
-
-        p, li {
-            font: var(--md-sys-typescale-body-large);
-            color: var(--md-sys-color-on-background);
-        }
-
-        /* --- ЧИПСЫ (Жанры игр) --- */
-        .chip-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .chip {
-            border: 1px solid var(--md-sys-color-surface-variant);
-            border-radius: 8px;
-            padding: 8px 16px;
-            font-weight: 500;
-            font-size: 14px;
-            background-color: rgba(255,255,255, 0.03);
-            transition: background-color 0.2s;
-        }
-        
-        .chip:hover {
-            background-color: var(--md-sys-color-surface-variant);
+        /* --- CAREER CHIPS --- */
+        .career-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .tag {
+            background: rgba(255,255,255,0.05); padding: 8px 16px; border-radius: 8px;
+            font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.1);
         }
 
         /* --- FOOTER --- */
         footer {
-            text-align: center;
-            padding: 40px;
-            opacity: 0.5;
-            font-size: 12px;
-            margin-top: 20px;
-            border-top: 1px solid var(--md-sys-color-surface-variant);
+            text-align: center; padding: 40px; border-top: 1px solid var(--md-sys-color-outline);
+            margin-top: 60px; color: var(--md-sys-color-outline);
         }
     </style>
 </head>
@@ -176,67 +154,187 @@
 
     <div class="container">
         
-        <header>
-            <div class="team-logos">
-                <a href="https://navi.gg/en" target="_blank" class="logo-card" aria-label="NAVI">
-                    <img src="navi.png" alt="NAVI">
-                </a>
-                <a href="https://vitality.gg/en" target="_blank" class="logo-card" aria-label="Vitality">
-                    <img src="vitality.png" alt="Vitality">
-                </a>
-                <a href="https://fazeclan.com/" target="_blank" class="logo-card" aria-label="FaZe">
-                    <img src="faze.png" alt="FaZe">
-                </a>
-            </div>
-
+        <header class="hero">
+            <div class="chip">Курсова робота</div>
             <h1>Технології кіберспорту</h1>
-            <p class="subtitle">Вплив кіберспортивних технологій на формування цифрової культури молоді</p>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;">
+                Аналіз технологічного впливу, цифрової культури та екосистеми індустрії в Україні.
+            </p>
+            <div style="margin-top: 25px; font-size: 0.9rem; opacity: 0.7;">
+                Виконав: Андрющенко С. С. | Керівник: Вінник М. О.
+            </div>
         </header>
 
-        <img src="s1mple.jpg" alt="S1mple Esports Player" class="hero-image">
-
-        <div class="card">
-            <h2>Актуальність теми</h2>
-            <p>
-                Кіберспорт є одним із найдинамічніших явищ сучасної цифрової культури.
-                Він поєднує технології, спорт і медіа, формуючи нові моделі соціальної
-                взаємодії та самореалізації молоді.
-            </p>
-        </div>
-
-        <div class="card">
-            <h2>Основні напрями кіберспорту</h2>
-            <div class="chip-container">
-                <div class="chip">MOBA: Dota 2, LoL</div>
-                <div class="chip">FPS: CS 2, Valorant</div>
-                <div class="chip">RTS: StarCraft II</div>
-                <div class="chip">Simulators: FIFA, NBA 2K</div>
-                <div class="chip">Battle Royale: PUBG, Fortnite</div>
+        <section>
+            <h2><span class="material-symbols-rounded" style="vertical-align: middle;">language</span> Екосистема</h2>
+            <div class="grid-4">
+                <a href="https://weplay.tv/" target="_blank" class="card org-card">
+                    <div class="org-title weplay">WePlay!</div>
+                    <div style="font-size: 0.8rem; opacity: 0.7;">Media Holding</div>
+                </a>
+                <a href="https://starladder.com/" target="_blank" class="card org-card">
+                    <div class="org-title starladder">StarLadder</div>
+                    <div style="font-size: 0.8rem; opacity: 0.7;">Tournament Op</div>
+                </a>
+                <a href="https://maincast.com/" target="_blank" class="card org-card">
+                    <div class="org-title maincast">Maincast</div>
+                    <div style="font-size: 0.8rem; opacity: 0.7;">Studio</div>
+                </a>
+                <a href="https://pro.eslgaming.com/" target="_blank" class="card org-card">
+                    <div class="org-title esl">ESL</div>
+                    <div style="font-size: 0.8rem; opacity: 0.7;">Global League</div>
+                </a>
             </div>
-        </div>
+        </section>
 
-        <div class="card">
-            <h2>Мета та сутність</h2>
-            <p><strong>Сутність:</strong> Організована змагальна діяльність у сфері відеоігор, що має професійні команди та глобальну аудиторію.</p>
-            <p><strong>Завдання дослідження:</strong></p>
-            <ul>
-                <li>Визначити роль кіберспорту в сучасній культурі</li>
-                <li>Проаналізувати технологічні аспекти розвитку</li>
-                <li>Дослідити вплив на цифрові цінності молоді</li>
-            </ul>
-        </div>
+        <section>
+            <h2><span class="material-symbols-rounded" style="vertical-align: middle;">memory</span> Технологічна база</h2>
+            <div class="card">
+                <div class="tech-split">
+                    <div>
+                        <h3 style="color: var(--md-sys-color-primary); margin-bottom: 20px;">Hardware (Залізо)</h3>
+                        <div class="tech-item">
+                            <span class="material-symbols-rounded tech-icon">monitor</span>
+                            <div>
+                                <h4>Монітори 360Гц+</h4>
+                                <p style="margin:0; font-size:0.9rem;">Надважливі для FPS ігор. Час відгуку 1мс.</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <span class="material-symbols-rounded tech-icon">mouse</span>
+                            <div>
+                                <h4>Периферія</h4>
+                                <p style="margin:0; font-size:0.9rem;">Сенсори до 30,000 DPI, механічні клавіатури.</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <span class="material-symbols-rounded tech-icon">developer_board</span>
+                            <div>
+                                <h4>High-End PC</h4>
+                                <p style="margin:0; font-size:0.9rem;">Intel Core i9 / Ryzen 9 + NVIDIA RTX для стабільного FPS.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--md-sys-color-secondary); margin-bottom: 20px;">Software (Софт)</h3>
+                        <div class="tech-item">
+                            <span class="material-symbols-rounded tech-icon">security</span>
+                            <div>
+                                <h4>Античіти</h4>
+                                <p style="margin:0; font-size:0.9rem;">VAC, Easy Anti-Cheat (EAC), BattleEye для Fair Play.</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <span class="material-symbols-rounded tech-icon">dns</span>
+                            <div>
+                                <h4>Турнірні платформи</h4>
+                                <p style="margin:0; font-size:0.9rem;">FACEIT, ESEA для матчмейкінгу та серверів.</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <span class="material-symbols-rounded tech-icon">forum</span>
+                            <div>
+                                <h4>Комунікація</h4>
+                                <p style="margin:0; font-size:0.9rem;">TeamSpeak та Discord для координації команд.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="card">
-            <h2>Вплив на цифрову культуру</h2>
-            <p>
-                Кіберспорт формує цифрову ідентичність, розвиває навички комунікації,
-                стимулює інтерес до ІТ та медіа-технологій, а також створює нові професійні можливості
-                для молодого покоління.
-            </p>
-        </div>
+        <section>
+            <h2>Основні дисципліни</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>MOBA</h3>
+                    <p>Dota 2, LoL</p>
+                    <div style="font-size:0.85rem; opacity:0.8;">Стратегія, контроль карти, командна взаємодія.</div>
+                </div>
+                <div class="card">
+                    <h3>FPS</h3>
+                    <p>CS 2, Valorant</p>
+                    <div style="font-size:0.85rem; opacity:0.8;">Реакція, аім (точність), тактичні раунди.</div>
+                </div>
+                <div class="card">
+                    <h3>Battle Royale</h3>
+                    <p>PUBG, Fortnite</p>
+                    <div style="font-size:0.85rem; opacity:0.8;">Виживання на великій карті, збір ресурсів.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid-3">
+            <div style="grid-column: span 2;">
+                <h2>Медіа-платформи</h2>
+                <div class="grid-3">
+                    <a href="https://www.twitch.tv/" target="_blank" class="platform-card">
+                        <span class="material-symbols-rounded plat-icon twitch">cast</span>
+                        <div>
+                            <h4>Twitch</h4>
+                            <span style="font-size:0.8rem; opacity:0.7;">Стрімінг турнірів</span>
+                        </div>
+                    </a>
+                    <a href="https://www.youtube.com/gaming" target="_blank" class="platform-card">
+                        <span class="material-symbols-rounded plat-icon youtube">play_circle</span>
+                        <div>
+                            <h4>YouTube</h4>
+                            <span style="font-size:0.8rem; opacity:0.7;">Архів та контент</span>
+                        </div>
+                    </a>
+                    <a href="https://discord.com/" target="_blank" class="platform-card">
+                        <span class="material-symbols-rounded plat-icon discord">chat_bubble</span>
+                        <div>
+                            <h4>Discord</h4>
+                            <span style="font-size:0.8rem; opacity:0.7;">Ком'юніті хаби</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h2>Кар'єрні можливості</h2>
+                <div class="card" style="height: calc(100% - 60px);">
+                    <p style="font-size:0.9rem;">Кіберспорт створює попит не тільки на гравців, а й на фахівців:</p>
+                    <div class="career-tags">
+                        <span class="tag">Аналітик</span>
+                        <span class="tag">Обсервер</span>
+                        <span class="tag">Менеджер</span>
+                        <span class="tag">Коментатор</span>
+                        <span class="tag">СММ-менеджер</span>
+                        <span class="tag">Психолог</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Вплив на культуру</h2>
+            <div class="card" style="border-left: 4px solid var(--md-sys-color-primary);">
+                <div class="tech-split">
+                    <div>
+                        <h4 style="color:#A5D6A7; margin-bottom:10px;">Позитивний вплив</h4>
+                        <ul style="padding-left:20px; font-size:0.95rem;">
+                            <li>Розвиток Soft Skills (лідерство, комунікація).</li>
+                            <li>Цифрова грамотність та інтерес до IT.</li>
+                            <li>Соціалізація через глобальні спільноти.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color:#EF9A9A; margin-bottom:10px;">Ризики</h4>
+                        <ul style="padding-left:20px; font-size:0.95rem;">
+                            <li>Gaming Disorder (ігрова залежність).</li>
+                            <li>Емоційне вигорання (burnout).</li>
+                            <li>Кібербулінг та токсичність.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <footer>
-            © 2026 | Курсова робота | Designed with Material You
+            <p>© 2026 Андрющенко С. С. | Херсонський державний університет</p>
+            <p style="font-size: 0.8rem; margin-top: 10px;">Designed with Material Design 3</p>
         </footer>
 
     </div>
